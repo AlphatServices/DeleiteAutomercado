@@ -1,0 +1,22 @@
+.circle-item {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background-color: #b1b5c3;
+  border-radius: 50%;
+}
+
+.circle:hover {
+  cursor: pointer;
+}
+
+.circle p {
+  position: relative;
+  top: 110px;
+  font-size: 14px;
+  color: #333;
+}

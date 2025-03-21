@@ -1,0 +1,55 @@
+/* Hero */
+.hero {
+  width: 100%;
+  height: 80vh;
+  background: #333;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(/hero/encabezado_0.png);
+}
+
+/* Banners */
+.banner {
+  width: 100%;
+  height: 60vh;
+  background: #333;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ban1 {
+  background-image: url(/hero/encabezado_1.png);
+}
+
+.ban2 {
+  background-image: url(/hero/encabezado_2.png);
+}
+
+.ban3 {
+  background-image: url(/hero/encabezado_3.png);
+}
+/* 
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+*/
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
+.custom-prev {
+  position: absolute;
+  left: -15px;
+  z-index: 10;
+  background-color: #000;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  position: relative;
+  bottom: 3rem;
+}
