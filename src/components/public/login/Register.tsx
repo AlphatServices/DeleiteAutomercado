@@ -1,9 +1,27 @@
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { schema } from "../../../validation/schema-register";
+import { z } from "zod";
 
 import "./Login.css";
 
+type FormData = z.infer<typeof schema>;
+
 function Login() {
   const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = (data: FormData) => {
+    console.log("Datos enviados:", data);
+  };
 
   return (
     <>
@@ -21,56 +39,73 @@ function Login() {
           </div>
         </div>
         <div className="content-form">
-          <form className="form-login" action="">
+          <form onSubmit={handleSubmit(onSubmit)} className="form-login">
             <div className="heading">
               <h2>Crea tu cuenta</h2>
               <p>Fácil y rápido</p>
             </div>
             <div className="login-input">
-              <label htmlFor="email">Nombre</label>
+              <label htmlFor="name">Nombre</label>
               <input
-                id="email"
-                autoComplete="email"
+                {...register("name")}
+                id="name"
+                autoComplete="name"
                 type="text"
                 placeholder="Escriba su nombre"
               />
+              {errors.name && (
+                <p className="helper-text">{errors.name.message}</p>
+              )}
             </div>
             <div className="login-input">
-              <label htmlFor="email">Correo o número de teléfono</label>
+              <label htmlFor="user">Correo o número de teléfono</label>
               <input
-                id="email"
-                autoComplete="email"
+                {...register("user")}
+                id="user"
+                autoComplete="user"
                 type="text"
                 placeholder="Escriba su correo o número de teléfono"
               />
+              {errors.user && (
+                <p className="helper-text">{errors.user.message}</p>
+              )}
             </div>
             <div className="login-input">
               <label htmlFor="password">Contraseña</label>
               <input
+                {...register("password")}
                 id="password"
                 type="password"
                 placeholder="Escriba su contraseña"
               />
-              <p>
-                <a className="helper-text" href="ruta-de-recuperacion.html">
-                  Debe contener mínimo 8 carácteres
-                </a>
-              </p>
+              {errors.password && (
+                <p className="helper-text">{errors.password.message}</p>
+              )}
             </div>
 
             <div>
               <label className="checkbox-container">
-                <input type="checkbox" />
+                <input type="checkbox" {...register("terms")} />
                 <div>
-                  He leído los <a href="hola">Términos y Condiciones</a>, y la{" "}
-                  <a href="adios">Política de Privacidad</a>
+                  He leído los <a href="">Términos y Condiciones</a>, y la{" "}
+                  <a href="">Política de Privacidad</a>
                 </div>
               </label>
+              {errors.terms && (
+                <p className="helper-text">{errors.terms.message}</p>
+              )}
             </div>
 
-            <a className="btn-login" href="">
+            <a
+              className="btn-form"
+              onClick={(e) => {
+                e.preventDefault();
+                handleSubmit(onSubmit)();
+              }}
+            >
               Ingresar
             </a>
+
             <div className="social">
               <div className="separator">
                 <hr />

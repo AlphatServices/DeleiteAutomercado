@@ -1,9 +1,27 @@
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { schema } from "../../../validation/schema-login";
+import { z } from "zod";
 
 import "./Login.css";
 
+type FormData = z.infer<typeof schema>;
+
 function Login() {
   const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = (data: FormData) => {
+    console.log("Datos enviados:", data);
+  };
 
   return (
     <>
@@ -21,27 +39,36 @@ function Login() {
           </div>
         </div>
         <div className="content-form">
-          <form className="form-login" action="">
+          <form onSubmit={handleSubmit(onSubmit)} className="form-login">
             <div className="heading">
               <h2>¡Bienvenidos!</h2>
               <p>A Deleite Automercado</p>
             </div>
             <div className="login-input">
-              <label htmlFor="email">Correo o Número de telefono</label>
+              <label htmlFor="user">Correo o Número de telefono</label>
               <input
-                id="email"
-                autoComplete="email"
+                {...register("user")}
+                id="user"
                 type="text"
                 placeholder="Escriba su correo o número de teléfono"
+                autoComplete="user"
               />
+              {errors.user && (
+                <p className="helper-text">{errors.user.message}</p>
+              )}
             </div>
             <div className="login-input">
               <label htmlFor="password">Contraseña</label>
               <input
+                {...register("password")}
                 id="password"
                 type="password"
                 placeholder="Escriba su contraseña"
+                autoComplete="password"
               />
+              {errors.password && (
+                <p className="helper-text">{errors.password.message}</p>
+              )}
               <p>
                 <a className="forget" href="ruta-de-recuperacion.html">
                   ¿Olvidó su contraseña?
@@ -49,7 +76,13 @@ function Login() {
               </p>
             </div>
 
-            <a className="btn-login" href="">
+            <a
+              className="btn-form"
+              onClick={(e) => {
+                e.preventDefault();
+                handleSubmit(onSubmit)();
+              }}
+            >
               Ingresar
             </a>
             <div className="social">

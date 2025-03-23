@@ -161,13 +161,18 @@ a {
 }
 
 /* Boton */
-.form-login .btn-login {
-  background-color: #141416;
+.form-login .btn-form {
+  background: #141416;
   padding: 1rem 1.5rem;
   border-radius: 90px;
   color: #fcfcfd;
   text-decoration: none;
   text-align: center;
+  cursor: pointer;
+}
+
+.form-login .btn-form:active {
+  background: #27272e;
 }
 
 /* Botones redes ingreso */
