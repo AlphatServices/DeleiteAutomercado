@@ -1,4 +1,4 @@
-import "./Category.css";
+import styles from "./Category.module.css";
 
 interface MyCategoryProps {
   title: string;
@@ -6,8 +6,8 @@ interface MyCategoryProps {
 
 function Category({ title }: MyCategoryProps) {
   return (
-    <div className="circle-item">
-      <div className="circle">
+    <div className={styles["circle-item"]}>
+      <div className={styles["circle"]}>
         <p>{title}</p>
       </div>
     </div>

@@ -34,13 +34,14 @@
   font-weight: 300;
   display: block;
 }
-.footer-logo {
-  display: flex;
-  align-items: center;
+
+.footer-col:has(img) {
+  align-content: center;
+  justify-items: center;
 }
+
 .footer-col img {
   width: 100%;
-  height: fit-content;
 }
 
 .footer-bottom {

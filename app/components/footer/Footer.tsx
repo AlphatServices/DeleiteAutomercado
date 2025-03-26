@@ -1,10 +1,10 @@
-import "./Footer.css";
+import styles from "./Footer.module.css";
 
 function footer() {
   return (
-    <footer className="footer">
-      <div className="footer-container">
-        <div className="footer-col">
+    <footer className={styles["footer"]}>
+      <div className={styles["footer-container"]}>
+        <div className={styles["footer-col"]}>
           <h4>Contacto</h4>
           <ul>
             <li>
@@ -16,21 +16,9 @@ function footer() {
             <li>
               <a href="#">Lechería, Anz Venezuela</a>
             </li>
-            <a href="#">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="#">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="#">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href="#">
-              <i className="fab fa-linkedin-in"></i>
-            </a>
           </ul>
         </div>
-        <div className="footer-col">
+        <div className={styles["footer-col"]}>
           <h4>Productos</h4>
           <ul>
             <li>
@@ -47,7 +35,7 @@ function footer() {
             </li>
           </ul>
         </div>
-        <div className="footer-col">
+        <div className={styles["footer-col"]}>
           <h4>Sobre Nosotros</h4>
           <ul>
             <li>
@@ -67,12 +55,12 @@ function footer() {
             </li>
           </ul>
         </div>
-        <div className="footer-col footer-logo">
+        <div className={styles["footer-col"]}>
           <img src="/navbar/LOGO.png" alt="" />
         </div>
       </div>
-      <div className="footer-bottom">
-        <div className="language-selector">
+      <div className={styles["footer-bottom"]}>
+        <div className={styles["language-selector"]}>
           <span>🌐 Español ▼</span>
         </div>
         <p>Copyright © 2025 All rights reserved.</p>

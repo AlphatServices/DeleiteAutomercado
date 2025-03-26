@@ -1,16 +1,14 @@
-import { useNavigate } from "react-router-dom";
+"use client";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { schema } from "../../../validation/schema-register";
+import { schema } from "../validation/schema-register";
 import { z } from "zod";
 
-import "./Login.css";
+import "../login/Login.css";
 
 type FormData = z.infer<typeof schema>;
 
 function Login() {
-  const navigate = useNavigate();
-
   const {
     register,
     handleSubmit,
@@ -126,16 +124,7 @@ function Login() {
             </div>
             <div className="label">
               <p>
-                Ya tienes una cuenta?{" "}
-                <a
-                  href=""
-                  onClick={(e) => {
-                    e.preventDefault(); // Evita la recarga de la página
-                    navigate("/login");
-                  }}
-                >
-                  Ingresar
-                </a>
+                Ya tienes una cuenta? <a href="/login">Ingresar</a>
               </p>
             </div>
           </form>
