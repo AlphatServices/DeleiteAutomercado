@@ -1,0 +1,20 @@
+.section-product {
+  width: 100%;
+  max-width: 1120px;
+  margin: auto;
+  padding: 1.5rem 0;
+}
+
+.section-product h2 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.card-container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, 16rem);
+  justify-content: center;
+}

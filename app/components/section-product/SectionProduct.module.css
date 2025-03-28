@@ -1,0 +1,248 @@
+.section-product {
+  width: 100%;
+  max-width: 1120px;
+  margin: auto;
+  padding: 1.5rem 0;
+}
+
+.section-product h2 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.section-product section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.reviews-container {
+  max-width: 700px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-tabs ul {
+  list-style: none;
+  display: flex;
+  gap: 3.5rem;
+  padding-bottom: 0.625rem;
+  padding-left: 0;
+}
+
+.nav-tabs li {
+  display: inline;
+}
+
+.nav-tabs a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.nav-tabs a.active {
+  border-bottom: 2px solid #c4c4c4;
+}
+
+.add-review h2 {
+  margin: 10px 0;
+}
+
+.add-review-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #23262f;
+}
+
+.add-review-cta {
+  font-weight: 4000;
+  font-size: 0.875rem;
+  color: #777e90;
+}
+
+/* vv Estilos Input vv */
+
+.review-input-container {
+  display: flex;
+  align-items: center;
+  border-radius: 1rem;
+  padding: 1rem 1rem 1rem 1.5rem;
+  border: 2px solid #e6e8ec;
+  width: 100%;
+}
+
+.review-input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+}
+.review-input::placeholder {
+  color: #777e90;
+}
+
+.emoji-button {
+  display: flex;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.publish-button {
+  background: black;
+  color: #fcfcfd;
+  border-radius: 90px;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.publish-button:hover {
+  background: #333;
+}
+
+/* ^^ Estilos Input ^^ */
+
+.comments-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.comments-section .comments-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comments-section .comments-heading h3 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.select-body {
+  position: relative;
+  width: 160px;
+  height: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.select-body select {
+  height: 100%;
+  width: 100%;
+  font-size: 0.875rem;
+  font-weight: bold;
+  appearance: none;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  color: #23262f;
+  border-radius: 0.75rem;
+  border: 2px #e6e8ec solid;
+}
+
+.select-body select:focus {
+  outline: none;
+}
+
+.select-body select option {
+  background: white;
+  color: black;
+  padding: 10px;
+  border: none;
+  font-size: 14px;
+}
+
+.select-body select option:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.select-icon {
+  width: 2rem;
+  position: absolute;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.select-icon img {
+  width: 100%;
+}
+
+.comment {
+  display: flex;
+  gap: 1.25rem;
+  padding-bottom: 1.625rem;
+  border-bottom: 1px solid #e6e8ec;
+}
+
+.user-profile-picture {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.comment-user {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  color: #353945;
+}
+
+.user-info div {
+  display: flex;
+  justify-content: space-between;
+  color: #b1b5c3;
+}
+
+.user-info div span {
+  color: #141416;
+  font-weight: 500;
+}
+
+.comment-actions {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: #777e90;
+}
+
+.comment-actions a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.loading-comments {
+  width: fit-content;
+  align-self: center;
+  padding: 12px 16px;
+  border: 2px solid #e6e8ec;
+  border-radius: 90px;
+  color: #23262f;
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  gap: 12px;
+}

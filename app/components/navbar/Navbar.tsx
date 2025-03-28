@@ -4,10 +4,15 @@ const Navbar = () => {
   return (
     <nav className={styles["navbar"]}>
       <div className={styles["logo"]}>
-        <img src="/navbar/LOGO.png" alt="Logo" />
+        <a href="/">
+          <img src="/navbar/LOGO.png" alt="Logo" />
+        </a>
       </div>
       <div className={styles["search-container"]}>
-        <a className={styles["btn-navbar"]}>DOLAR</a>
+        <a className={styles["btn-navbar"]}>
+          <img src="navbar/dollar.svg" />
+          DOLAR
+        </a>
         <div className={styles["divider"]} />
         <form className={styles["search-bar"]}>
           <img
