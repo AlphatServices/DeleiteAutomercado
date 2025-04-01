@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const schema = z.object({
-  user: z.string().refine(
+  email: z.string().refine(
     (value) =>
       /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value) || // Valida correo electrónico
       /^(0412|0414|0416|0424|0426)\d{7}$/.test(value),

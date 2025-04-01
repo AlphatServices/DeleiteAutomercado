@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "../validation/schema-login";
 import { z } from "zod";
+import axios from "axios";
 
 import "./Login.css";
 
@@ -17,8 +18,22 @@ function Login() {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
     console.log("Datos enviados:", data);
+    const response = await axios
+      .post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, data)
+      .then((response) => {
+        const token = response.data.token; // Extraer el token
+        if (token) {
+          localStorage.setItem("token", token); // Guardar en localStorage
+          console.log("Token guardado:", token);
+        }
+      })
+      .catch((error) => {
+        console.error("Error en la autenticación:", error);
+      });
+    // Respuesta en consola (Borrar al terminar)
+    console.log(response);
   };
 
   return (
@@ -43,16 +58,16 @@ function Login() {
               <p>A Deleite Automercado</p>
             </div>
             <div className="login-input">
-              <label htmlFor="user">Correo o Número de telefono</label>
+              <label htmlFor="email">Correo o Número de telefono</label>
               <input
-                {...register("user")}
-                id="user"
+                {...register("email")}
+                id="email"
                 type="text"
                 placeholder="Escriba su correo o número de teléfono"
-                autoComplete="user"
+                autoComplete="email"
               />
-              {errors.user && (
-                <p className="helper-text">{errors.user.message}</p>
+              {errors.email && (
+                <p className="helper-text">{errors.email.message}</p>
               )}
             </div>
             <div className="login-input">

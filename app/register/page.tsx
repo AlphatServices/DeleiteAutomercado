@@ -3,12 +3,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "../validation/schema-register";
 import { z } from "zod";
+import axios from "axios";
 
 import "../login/Login.css";
 
 type FormData = z.infer<typeof schema>;
 
-function Login() {
+function Register() {
   const {
     register,
     handleSubmit,
@@ -17,8 +18,14 @@ function Login() {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
     console.log("Datos enviados:", data);
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/register`,
+      data
+    );
+    // Respuesta en consola (Borrar al terminar)
+    console.log(response);
   };
 
   return (
@@ -56,16 +63,16 @@ function Login() {
               )}
             </div>
             <div className="login-input">
-              <label htmlFor="user">Correo o número de teléfono</label>
+              <label htmlFor="email">Correo o número de teléfono</label>
               <input
-                {...register("user")}
-                id="user"
-                autoComplete="user"
+                {...register("email")}
+                id="email"
+                autoComplete="email"
                 type="text"
                 placeholder="Escriba su correo o número de teléfono"
               />
-              {errors.user && (
-                <p className="helper-text">{errors.user.message}</p>
+              {errors.email && (
+                <p className="helper-text">{errors.email.message}</p>
               )}
             </div>
             <div className="login-input">
@@ -134,4 +141,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

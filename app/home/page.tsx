@@ -14,6 +14,13 @@ import "swiper/swiper-bundle.css";
 const Home = () => {
   const slides = Array.from({ length: 12 }, (_, index) => index); // Genera un array con 12 elementos
 
+  const token = localStorage.getItem("token"); // O sessionStorage
+  if (token) {
+    console.log("Usuario autenticado");
+  } else {
+    console.log("No autenticado");
+  }
+
   return (
     <>
       <header>

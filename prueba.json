@@ -1,0 +1,21 @@
+[
+  {
+    "_comment": "Usuario registrado",
+    "email": "paolo@constructor.com",
+    "name": "Paolo",
+    "password": "Carritos#300"
+  },
+
+  {
+    "name": "Miguelito",
+    "email": "Miguelox@email.com",
+    "password": "DiosEsGrande$400"
+  },
+
+  {
+    "_comment": "Usuario registrado",
+    "email": "marcos@developer.net",
+    "name": "Marcos",
+    "password": "Programa$789"
+  }
+]

@@ -27,7 +27,14 @@ const Navbar = () => {
           />
         </form>
         <div className={styles["right"]}>
-          <img src="/navbar/shopping-cart.svg" alt="Shopping Cart" />
+          <a
+            onClick={() => {
+              localStorage.removeItem("token");
+              console.log("Sesión cerrada");
+            }}
+          >
+            <img src="/navbar/shopping-cart.svg" alt="Shopping Cart" />
+          </a>
           <a href="/login">
             <img src="/navbar/Line.svg" alt="Divider" />
           </a>

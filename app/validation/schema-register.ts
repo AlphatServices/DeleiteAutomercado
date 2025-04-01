@@ -10,7 +10,7 @@ export const schema = z.object({
       "El nombre solo puede contener letras y espacios"
     ),
 
-  user: z
+  email: z
     .string()
     .min(1, "Este campo es obligatorio")
     .refine(
