@@ -6,6 +6,7 @@ import Section from "../components/section/Section";
 import Category from "../components/category/Category";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
+import { useEffect } from "react";
 
 import styles from "./Home.module.css";
 
@@ -14,12 +15,10 @@ import "swiper/swiper-bundle.css";
 const Home = () => {
   const slides = Array.from({ length: 12 }, (_, index) => index); // Genera un array con 12 elementos
 
-  const token = localStorage.getItem("token"); // O sessionStorage
-  if (token) {
-    console.log("Usuario autenticado");
-  } else {
-    console.log("No autenticado");
-  }
+  useEffect(() => {
+    const token = localStorage.getItem("token"); // Solo se ejecuta en el cliente
+    token ? console.log("Usuario autenticado") : console.log("No autenticado");
+  }, []);
 
   return (
     <>

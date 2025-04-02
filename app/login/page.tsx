@@ -3,13 +3,18 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "../validation/schema-login";
 import { z } from "zod";
+import { useRouter } from "next/navigation"; // Asegúrate de importar correctamente
 import axios from "axios";
+import { useState } from "react";
 
 import "./Login.css";
 
 type FormData = z.infer<typeof schema>;
 
 function Login() {
+  const router = useRouter(); // Asegúrate de usarlo dentro del componente
+  const [errorMessage, setErrorMessage] = useState(""); // Estado para el mensaje de error
+
   const {
     register,
     handleSubmit,
@@ -18,19 +23,23 @@ function Login() {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = (data: FormData) => {
     console.log("Datos enviados:", data);
-    const response = await axios
+    setErrorMessage("");
+    const response = axios
       .post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, data)
       .then((response) => {
         const token = response.data.token; // Extraer el token
         if (token) {
           localStorage.setItem("token", token); // Guardar en localStorage
           console.log("Token guardado:", token);
+          router.push("/");
         }
       })
       .catch((error) => {
-        console.error("Error en la autenticación:", error);
+        setErrorMessage(
+          "Correo electrónico o contraseña incorrectos. Por favor, inténtalo de nuevo."
+        );
       });
     // Respuesta en consola (Borrar al terminar)
     console.log(response);
@@ -69,6 +78,7 @@ function Login() {
               {errors.email && (
                 <p className="helper-text">{errors.email.message}</p>
               )}
+              {errorMessage && <p className="helper-text">{errorMessage}</p>}
             </div>
             <div className="login-input">
               <label htmlFor="password">Contraseña</label>
@@ -81,6 +91,9 @@ function Login() {
               />
               {errors.password && (
                 <p className="helper-text">{errors.password.message}</p>
+              )}
+              {errors.root && (
+                <p className="helper-text">{errors.root.message}</p>
               )}
               <p>
                 <a className="forget" href="ruta-de-recuperacion.html">
