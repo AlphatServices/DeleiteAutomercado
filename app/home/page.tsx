@@ -4,6 +4,7 @@ import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/footer/Footer";
 import Section from "../components/section/Section";
 import Category from "../components/category/Category";
+import DeliveryTracker from "../components/delivery-tracker/DeliveryTracker";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { useEffect } from "react";
@@ -128,6 +129,7 @@ const Home = () => {
         </Section>
       </main>
       <Footer />
+      <DeliveryTracker />
     </>
   );
 };
