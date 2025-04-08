@@ -1,4 +1,5 @@
 .modal {
+  z-index: 1000;
   position: fixed;
   display: flex;
   top: 0;
@@ -8,6 +9,9 @@
   background: rgba(0, 0, 0, 0.2);
   padding: 1rem;
   justify-content: flex-end;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.3s ease;
 }
 
 .container-delivery {
@@ -151,4 +155,37 @@
   border-radius: 100px;
   text-align: center;
   padding: 1rem 0;
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.slideLeft {
+  animation: slideLeft 1s forwards;
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.slideRight {
+  animation: slideRight 1s forwards;
+}
+
+.fade {
+  opacity: 1 !important;
+  visibility: visible !important;
 }

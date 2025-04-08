@@ -1,3 +1,4 @@
+import { ModalProvider } from "./context/ModalContext";
 import "./ui/globals.css";
 
 export default function DashboardLayout({
@@ -7,7 +8,9 @@ export default function DashboardLayout({
 }) {
   return (
     <html>
-      <body>{children}</body>
+      <body>
+        <ModalProvider>{children}</ModalProvider>
+      </body>
     </html>
   );
 }

@@ -1,7 +1,10 @@
 "use client";
 import styles from "./Navbar.module.css";
+import { useModal } from "../../context/ModalContext";
 
 const Navbar = () => {
+  const { toggleDeliveryModal } = useModal();
+
   return (
     <nav className={styles["navbar"]}>
       <div className={styles["logo"]}>
@@ -28,16 +31,34 @@ const Navbar = () => {
           />
         </form>
         <div className={styles["right"]}>
+          <a onClick={toggleDeliveryModal}>
+            <img
+              src="/navbar/delivery.svg"
+              alt="Divider"
+              width="24px"
+              height="24px"
+            />
+          </a>
           <a
-            onClick={() => {
-              localStorage.removeItem("token");
-              console.log("Sesión cerrada");
-            }}
+          // onClick={() => {
+          //   localStorage.removeItem("token");
+          //   console.log("Sesión cerrada");
+          // }}
           >
-            <img src="/navbar/shopping-cart.svg" alt="Shopping Cart" />
+            <img
+              src="/navbar/shopping-cart.svg"
+              alt="Shopping Cart"
+              width="24px"
+              height="24px"
+            />
           </a>
           <a href="/login">
-            <img src="/navbar/Line.svg" alt="Divider" />
+            <img
+              src="/navbar/user.svg"
+              alt="Divider"
+              width="24px"
+              height="24px"
+            />
           </a>
         </div>
       </div>

@@ -1,4 +1,1 @@
-<svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="0.71582" y="29" width="40" height="40" rx="12" transform="rotate(-45 0.71582 29)" fill="#5B5B5B"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M21.8889 22H36.1111V23.75H21.8889V22ZM37 30.75V29L36.1111 24.625H21.8889L21 29V30.75H21.8889V36H30.7778V30.75H34.3333V36H36.1111V30.75H37ZM29 34.25H23.6667V30.75H29V34.25Z" fill="white"/>
-</svg>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46.63 46.63"><defs><style>.cls-1{fill:#5b5b5b;}.cls-2{fill:#fff;}</style></defs><title>marker-1</title><rect class="cls-1" x="9" y="9" width="40" height="40" rx="12" ry="12" transform="translate(-17.7 23.31) rotate(-45)"/><path class="cls-2" d="M21.89,22H36.11v1.75H21.89V22ZM37,30.75V29l-0.89-4.37H21.89L21,29v1.75h0.89V36h8.89V30.75h3.56V36h1.78V30.75H37Zm-8,3.5H23.67v-3.5H29v3.5Z" transform="translate(-5.69 -5.69)"/></svg>
