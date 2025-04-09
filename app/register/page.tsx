@@ -90,14 +90,14 @@ function Register() {
 
             <div>
               <label className="checkbox-container">
-                <input type="checkbox" {...register("terms")} />
+                <input type="checkbox" {...register("termins")} />
                 <div>
                   He leído los <a href="">Términos y Condiciones</a>, y la{" "}
                   <a href="">Política de Privacidad</a>
                 </div>
               </label>
-              {errors.terms && (
-                <p className="helper-text">{errors.terms.message}</p>
+              {errors.termins && (
+                <p className="helper-text">{errors.termins.message}</p>
               )}
             </div>
 

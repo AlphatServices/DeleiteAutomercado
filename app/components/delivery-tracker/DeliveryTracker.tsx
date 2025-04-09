@@ -5,8 +5,7 @@ import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useModal } from "../../context/ModalContext";
 
-mapboxgl.accessToken =
-  "pk.eyJ1IjoidGhlaWx5biIsImEiOiJjbTR1ZWJ1dWkwNjR6Mm1xd2ZkcTV2ZWw5In0.hlJtQAsJzgKvff309imMZg";
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_API_MAPBOX;
 
 function DeliveryTracker() {
   const { isDeliveryModalOpen, toggleDeliveryModal } = useModal();

@@ -29,7 +29,7 @@ export const schema = z.object({
     .regex(/[A-Z]/, "Debe contener mínimo una letra mayúscula")
     .regex(/\d/, "Debe contener mínimo un número")
     .regex(/[\W_]/, "Debe contener mínimo un carácter especial"),
-  terms: z.boolean().refine((value) => value === true, {
+  termins: z.boolean().refine((value) => value === true, {
     message: "Debes aceptar los términos y condiciones.",
   }),
 });

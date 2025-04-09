@@ -7,7 +7,6 @@ import Category from "../components/category/Category";
 import DeliveryTracker from "../components/delivery-tracker/DeliveryTracker";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
-import { useEffect } from "react";
 
 import styles from "./Home.module.css";
 
@@ -15,11 +14,6 @@ import "swiper/swiper-bundle.css";
 
 const Home = () => {
   const slides = Array.from({ length: 12 }, (_, index) => index); // Genera un array con 12 elementos
-
-  useEffect(() => {
-    const token = localStorage.getItem("token"); // Solo se ejecuta en el cliente
-    token ? console.log("Usuario autenticado") : console.log("No autenticado");
-  }, []);
 
   return (
     <>

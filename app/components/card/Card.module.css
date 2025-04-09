@@ -5,6 +5,7 @@
   width: 240px;
   height: 380px;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .card .product-img {
