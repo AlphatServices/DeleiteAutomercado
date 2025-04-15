@@ -1,6 +1,11 @@
 import styles from "./Card.module.css";
 
-function Card() {
+interface MyCategoryProps {
+  title: string;
+  price: number;
+}
+
+function Card({ title, price }: MyCategoryProps) {
   return (
     <a href="/product-info">
       <div className={styles["card"]}>
@@ -8,8 +13,8 @@ function Card() {
           <img src="/product-img-example/cheesecake.png" alt="" />
         </div>
         <div className={styles["product-info"]}>
-          <h3 className={styles["product-title"]}>Chocolate Cheesecake</h3>
-          <p className={styles["product-price"]}>$20.99</p>
+          <h3 className={styles["product-title"]}>{title}</h3>
+          <p className={styles["product-price"]}>${price}</p>
           <div className={styles["product-points"]}>
             <p>
               ★★★★★ <span>(120)</span>{" "}

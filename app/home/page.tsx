@@ -5,15 +5,42 @@ import Footer from "../components/footer/Footer";
 import Section from "../components/section/Section";
 import Category from "../components/category/Category";
 import DeliveryTracker from "../components/delivery-tracker/DeliveryTracker";
+import api from "../utils/api";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
+import { useEffect, useState } from "react";
 
 import styles from "./Home.module.css";
 
 import "swiper/swiper-bundle.css";
 
+interface Product {
+  name: string;
+  description: string;
+  image: string;
+  price: number;
+  stock: number;
+  category_id: number;
+}
+
 const Home = () => {
-  const slides = Array.from({ length: 12 }, (_, index) => index); // Genera un array con 12 elementos
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await api.get("/products/all");
+        setProducts(res.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <>
@@ -48,9 +75,9 @@ const Home = () => {
             modules={[Autoplay, Navigation]}
             className="mySwiper"
           >
-            {slides.map((_, index) => (
+            {products.map((product, index) => (
               <SwiperSlide key={index}>
-                <Card />
+                <Card title={product.name} price={product.price} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -70,9 +97,9 @@ const Home = () => {
             modules={[Autoplay, Navigation]}
             className="mySwiper"
           >
-            {slides.map((_, index) => (
+            {products.map((product, index) => (
               <SwiperSlide key={index}>
-                <Card />
+                <Card title={product.name} price={product.price} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -92,9 +119,9 @@ const Home = () => {
             modules={[Autoplay, Navigation]}
             className="mySwiper"
           >
-            {slides.map((_, index) => (
+            {products.map((product, index) => (
               <SwiperSlide key={index}>
-                <Card />
+                <Card title={product.name} price={product.price} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -114,9 +141,9 @@ const Home = () => {
             modules={[Autoplay, Navigation]}
             className="mySwiper"
           >
-            {slides.map((_, index) => (
+            {products.map((product, index) => (
               <SwiperSlide key={index}>
-                <Card />
+                <Card title={product.name} price={product.price} />
               </SwiperSlide>
             ))}
           </Swiper>

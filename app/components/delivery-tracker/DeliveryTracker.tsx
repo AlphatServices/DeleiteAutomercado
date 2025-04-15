@@ -19,23 +19,11 @@ function DeliveryTracker() {
   const destination: [number, number] = [-64.696447, 10.20229]; // Virgen
 
   useEffect(() => {
-    // const modal = document.getElementById("modal-delivery");
-    // const btn = document.getElementById("btn-delivery");
-    // const info = modal?.querySelector(":scope > div"); // ":scope" asegura que sea hijo directo
-
-    // modal?.addEventListener("click", (e) => {
-    //   if (e.target === modal) {
-    //     modal?.classList.add("fade");
-    //     info?.classList.remove("slide-right");
-    //     info?.classList.add("slide-left"); // Agrega la clase si existe
-    //   }
-    // });
-
     const map = new mapboxgl.Map({
       container: mapContainerRef.current!,
       style: "mapbox://styles/mapbox/light-v11",
       center: origin,
-      zoom: 14,
+      zoom: 13,
       attributionControl: false,
     });
 
