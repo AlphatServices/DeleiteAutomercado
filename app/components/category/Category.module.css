@@ -1,12 +1,15 @@
 .circle-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  margin-bottom: 10px;
+  gap: 10px;
 }
 
 .circle {
   width: 100px;
   height: 100px;
-  background-color: #b1b5c3;
+  background-color: transparent;
   border-radius: 50%;
 }
 
@@ -14,9 +17,9 @@
   cursor: pointer;
 }
 
-.circle p {
-  position: relative;
-  top: 110px;
+.circle-item p {
   font-size: 14px;
   color: #333;
+  word-wrap: break-word;
+  max-width: 100px;
 }

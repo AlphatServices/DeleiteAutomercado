@@ -42,6 +42,24 @@ const Home = () => {
     fetchProducts();
   }, []);
 
+  // Array de categorías con sus respectivas imágenes
+  const categories = [
+    { title: "Viveres", image: "/category/01-Viveres.png" },
+    { title: "Frutas & Vegetales", image: "/category/02-Frutas&Vegetales.png" },
+    { title: "Congelados & Refrigerados", image: "/category/03-Congelados&Refrigerados.png" },
+    { title: "Herramientas", image: "/category/04-Herramientas.png" },
+    { title: "Bebidas", image: "/category/05-Bebidas.png" },
+    { title: "Panaderia", image: "/category/06-Panaderia.png" },
+    { title: "Ofertas", image: "/category/07-Ofertas.png" },
+    { title: "Salud", image: "/category/08-Salud.png" },
+    { title: "Productos Frescos", image: "/category/09-ProductosFrescos.png" },
+    { title: "Compra Protegida", image: "/category/10-CompraProtegida.png" },
+    { title: "Menos de $10", image: "/category/11-Menos10.png" },
+    { title: "Los Mejores Precios", image: "/category/12-LosMejoresPrecios.png" },
+    { title: "Linea Deleite", image: "/category/13-LineaDeleite.png" },
+    { title: "Delivery", image: "/category/14-Delivery.png" }
+  ];
+
   return (
     <>
       <header>
@@ -50,15 +68,25 @@ const Home = () => {
       </header>
       <main>
         <Section title="Categorias">
-          <Category title="Viveres" />
-          <Category title="Congelados & Refrigerados" />
-          <Category title="Frutas & Vegetales" />
-          <Category title="Herramientas" />
-          <Category title="Bebidas" />
-          <Category title="Panadería" />
-          <Category title="Salud" />
-          <Category title="Postres" />
-          <Category title="Ofertas" />
+          <Swiper
+            // navigation={{
+            //   prevEl: ".custom-prev", // Clase personalizada
+            // }}
+            slidesPerView={9}
+            loop={true}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false,
+            }}
+            modules={[Autoplay, Navigation]}
+            className="mySwiper"
+          >
+            {categories.map((category, index) => (
+            <SwiperSlide key={index}>
+              <Category title={category.title} image={category.image} />
+            </SwiperSlide>
+            ))}
+          </Swiper>
         </Section>
         <Section title="Los más vendidos" subtitle="Popular">
           {/* <button className="custom-prev">⬅</button> */}
