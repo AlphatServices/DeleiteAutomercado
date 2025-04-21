@@ -24,15 +24,13 @@ function Login() {
   });
 
   const onSubmit = (data: FormData) => {
-    console.log("Datos enviados:", data);
     setErrorMessage("");
-    const response = axios
+    axios
       .post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, data)
       .then((response) => {
         const token = response.data.token; // Extraer el token
         if (token) {
           localStorage.setItem("token", token); // Guardar en localStorage
-          console.log("Token guardado:", token);
           router.push("/");
         }
       })
@@ -41,8 +39,6 @@ function Login() {
           "Correo electrónico o contraseña incorrectos. Por favor, inténtalo de nuevo."
         );
       });
-    // Respuesta en consola (Borrar al terminar)
-    console.log(response);
   };
 
   return (

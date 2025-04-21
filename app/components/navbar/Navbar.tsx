@@ -3,15 +3,36 @@ import styles from "./Navbar.module.css";
 import { useModal } from "../../context/ModalContext";
 import { getUserEmailFromToken } from "../../utils/get-user";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Navbar = () => {
   const { toggleDeliveryModal } = useModal();
   const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [dollarRate, setDollarRate] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     // Ejecutar getUserEmailFromToken solo en el cliente
     const email = getUserEmailFromToken();
     setUserEmail(email);
+  }, []);
+
+  useEffect(() => {
+    // Obtener el precio del dólar usando nuestra propia API
+    setIsLoading(true);
+    axios
+      .get('/api/bcv-rates')
+      .then((response) => {
+        if (response.data && response.data.dollar) {
+          setDollarRate(response.data.dollar);
+        }
+      })
+      .catch((error) => {
+        console.error('Error al obtener tasa del dólar:', error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   return (
@@ -22,9 +43,9 @@ const Navbar = () => {
         </a>
       </div>
       <div className={styles["search-container"]}>
-        <a className={styles["btn-navbar"]}>
-          <img src="navbar/dollar.svg" />
-          DOLAR
+        <a className={styles["btn-navbar"]} style={{ whiteSpace: 'nowrap' }}>
+          {/* <img src="/navbar/dollar.svg" alt="Dollar icon" /> */}
+          {isLoading ? 'Cargando...' : dollarRate ? `Bs ${dollarRate.toFixed(2)}` : ''}
         </a>
         <div className={styles["divider"]} />
         <form className={styles["search-bar"]}>
