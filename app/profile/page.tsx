@@ -1,6 +1,6 @@
 import styles from "./Profile.module.css";
 
-export default function page() {
+export default function Profile() {
   return (
     <>
       <div className={styles["header-container"]}>

@@ -1,6 +1,6 @@
 import styles from "./Orders.module.css";
 
-export default function page() {
+export default function Orders() {
   return (
     <>
       <div className={styles["section-title"]}>Pedidos en camino</div>

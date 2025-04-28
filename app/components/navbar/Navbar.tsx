@@ -71,12 +71,7 @@ const Navbar = () => {
                 height="24px"
               />
             </a>
-            <a
-            // onClick={() => {
-            //   localStorage.removeItem("token");
-            //   console.log("Sesión cerrada");
-            // }}
-            >
+            <a href="/cart">
               <img
                 src="/navbar/shopping-cart.svg"
                 alt="Shopping Cart"
