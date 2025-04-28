@@ -1,0 +1,90 @@
+/* My Orders Styles */
+.profile-container {
+    display: flex;
+    gap: 40px;
+    max-width: 1120px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  .sidebar {
+    background: #fff;
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    width: 300px;
+    height: 392px;
+    background: #fcfcfd;
+    border: 1px solid #f4f5f6;
+    box-shadow: 0px 64px 64px -48px rgba(15, 15, 15, 0.08);
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  
+  .sidebar li {
+    color: #777E90;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .sidebar li a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sidebar li img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .sidebar li:hover {
+    color: #333;
+  }
+  
+  .sidebar li.active {
+    font-weight: 700;
+    color: #23262F;
+  }
+  
+  .content {
+    flex: 1;
+  }
+
+  /* Media queries para responsividad */
+@media (max-width: 767px) {
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .sidebar ul {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .sidebar li {
+        padding: 10px 15px;
+        margin-bottom: 10px;
+        background: #f4f5f6;
+        border-radius: 20px;
+    }
+}
