@@ -164,7 +164,7 @@ export default function Cart() {
               </div>
             </div>
             <div className={styles["checkout-item"]}>
-              <a className={styles["checkout-btn"]}>Finalizar Compra</a>
+              <a href="/payment" className={styles["checkout-btn"]}>Finalizar Compra</a>
             </div>
           </div>
         </div>

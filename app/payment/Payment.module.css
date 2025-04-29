@@ -1,0 +1,307 @@
+/* Contenedor principal de pago */
+.content_payment {
+    padding: 5rem 1.5rem;
+    display: flex;
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 1120px;
+    margin: auto;
+}
+
+.content_payment>div {
+    flex: 1;
+}
+
+/* Sección de información de pago */
+.payment_info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.payment_title {
+    font-size: 3rem;
+    line-height: 3.5rem;
+    font-weight: bold;
+    color: #23262f;
+}
+
+.payment_divider {
+    width: 100%;
+    border-top: 1px solid #e6e8ec;
+}
+
+/* Métodos de pago */
+.payment_method_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.payment_method_container p {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: bold;
+    color: #23262F;
+}
+
+.payment_method_container div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.payment_method_container div a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #777E90;
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.payment_method_container div a.active {
+    background-color: #353945;
+    color: #FCFCFD;
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    font-weight: bold;
+}
+
+/* Formulario de pago */
+.payment_form_container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.payment_form_container p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #23262F;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.input_group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.input_form {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 2px solid #E6E8EC;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.input_form:focus-within {
+    border-color: #353945;
+}
+
+.input_form input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 16px;
+    background-color: transparent;
+    padding-right: 30px;
+}
+
+.check_icon {
+    position: absolute;
+    right: 12px;
+    color: #aaa;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    display: none;
+}
+
+/* Validación de formulario */
+.valid {
+    border-color: #16C47F !important;
+}
+
+.invalid {
+    border-color: #f00 !important;
+}
+
+.valid .check_icon {
+    display: block;
+    color: #16C47F;
+}
+
+.invalid .check_icon {
+    display: block;
+    content: '✖';
+    color: #f00;
+}
+
+/* Contenedor de inputs en línea */
+.input_container {
+    display: flex;
+    gap: 1rem;
+}
+
+.input_container .input_group {
+    flex: 1;
+}
+
+.form label {
+    width: 100%;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #B1B5C3;
+}
+
+/* Botón de pago */
+.payment_btn {
+    display: inline;
+    width: fit-content;
+    background-color: #141416;
+    color: #FCFCFD;
+    padding: 1rem 1.5rem;
+    border-radius: 90px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Checkbox personalizado */
+.save_card {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.custom_checkbox {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 1rem;
+    user-select: none;
+}
+
+.custom_checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background-color: white;
+    border: 2px solid #E6E8EC;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.custom_checkbox:hover input~.checkmark {
+    border-color: #141416;
+}
+
+.custom_checkbox input:checked~.checkmark {
+    background-color: #141416;
+    border-color: #141416;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.custom_checkbox input:checked~.checkmark:after {
+    display: block;
+}
+
+.custom_checkbox .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.label_text {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+    color: #353945;
+}
+
+/* Detalles del precio */
+.payment_price_details {
+    padding-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 350px;
+}
+
+.payment_price_details>p {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #23262F;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+}
+
+.detail:last-child {
+    background-color: #F4F5F6;
+    border-radius: 0.5rem;
+}
+
+.detail p:first-child {
+    color: #777E90;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.detail p:last-child {
+    font-size: 14px;
+    line-height: 24px;
+    color: #23262F;
+    font-weight: 600;
+}
+
+.detail:last-child p:first-child {
+    font-weight: 700;
+    color: #23262F;
+}
