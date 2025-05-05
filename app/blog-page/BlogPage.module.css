@@ -1,0 +1,168 @@
+/* Basic layout */
+.main {
+  padding: 0 1rem;
+}
+
+.content {
+  width: 100%;
+  max-width: 1120px;
+  margin: auto;
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Blog post styles */
+.blog_head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.blog_head h2 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  color: #333;
+}
+
+.blog_head span {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.blog_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.blog_body p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+.blog_body img {
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+/* Article cards styles */
+.articles_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 2.5rem;
+  column-gap: 4.75rem;
+  align-items: flex-start;
+}
+
+.article_card {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+  overflow: hidden;
+  height: 140px;
+}
+
+.article_img {
+  width: 180px;
+  height: 140px;
+  overflow: hidden;
+  background-color: #6e7891;
+  border-radius: 20px;
+}
+
+.article_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.article_card:hover .article_img img {
+  transform: scale(1.05);
+}
+
+.article_info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+  position: relative;
+  height: 100%;
+}
+
+.article_title {
+  color: #363940;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+}
+
+.article_excerpt {
+  color: #666;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 35px;
+}
+
+.article_meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #999;
+  font-size: 0.7rem;
+}
+
+.article_meta img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+}
+
+.read_more {
+  display: inline-block;
+  background-color: transparent;
+  color: #333;
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+  margin-left: auto;
+}
+
+.read_more:hover {
+  color: #1c60c4;
+}
+
+/* Global styles */
+body {
+  background: #fff;
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a:hover {
+  cursor: pointer;
+}
