@@ -6,10 +6,12 @@ import { z } from "zod";
 import axios from "axios";
 
 import "../login/Login.css";
+import { useState } from "react";
 
 type FormData = z.infer<typeof schema>;
 
 function Register() {
+  const [errorBack, setErrorBack] = useState<string>("");
   const {
     register,
     handleSubmit,
@@ -20,12 +22,16 @@ function Register() {
 
   const onSubmit = async (data: FormData) => {
     console.log("Datos enviados:", data);
-    const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/register`,
-      data
-    );
-    // Respuesta en consola (Borrar al terminar)
-    console.log(response);
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/auth/register`,
+        data
+      );
+      console.log(response);
+    } catch (error: any) {
+      setErrorBack(error.response.data.message);
+      console.error("Error al registrar:", error);
+    }
   };
 
   return (
@@ -116,6 +122,7 @@ function Register() {
                 <hr />
                 <span>Desea ingresar con</span>
                 <hr />
+                <p className="helper-text">{errorBack}</p>
               </div>
               <div className="content-social">
                 <div>
