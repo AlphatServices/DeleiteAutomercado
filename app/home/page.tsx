@@ -30,8 +30,9 @@ const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await api.get("/products/all");
-        setProducts(res.data);
+        const res = await api.patch("/products/api-products-inventory-wis",{Page:1});
+        console.log(res.data.data);
+        setProducts(res.data.data);
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
@@ -105,7 +106,7 @@ const Home = () => {
           >
             {products.map((product, index) => (
               <SwiperSlide key={index}>
-                <Card title={product.name} price={product.price} />
+                <Card title={product.description} price={0} />
               </SwiperSlide>
             ))}
           </Swiper>
