@@ -9,11 +9,13 @@ interface MyCategoryProps {
 function Category({ title, image }: MyCategoryProps) {
   // Si se proporciona una imagen directamente, la usamos
   // Si no, usamos el path por defecto basado en el título
-  const imagePath = image ? image : `/category/${title}.png`;
+  //const imagePath = image ? image : `/category/${title}.png`;
+  const imagePath = image ? image : "/category/14-Delivery.png";
 
   return (
     <div className={styles["circle-item"]}>
       <div className={styles["circle"]}>
+        
         <Image 
           src={imagePath}
           alt={title}

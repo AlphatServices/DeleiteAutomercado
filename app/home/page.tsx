@@ -1,4 +1,7 @@
 "use client";
+import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
 import Card from "../components/card/Card";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/footer/Footer";
@@ -6,32 +9,24 @@ import Section from "../components/section/Section";
 import Category from "../components/category/Category";
 import DeliveryTracker from "../components/delivery-tracker/DeliveryTracker";
 import api from "../utils/api";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
-import { useEffect, useState } from "react";
-
+import { Product, Categorys} from "./Home.interfaces";
 import styles from "./Home.module.css";
-
 import "swiper/swiper-bundle.css";
 
-interface Product {
-  name: string;
-  description: string;
-  image: string;
-  price: number;
-  stock: number;
-  category_id: number;
-}
 
 const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [productsFarmacia, setProductsFarmacia] = useState<Product[]>([]);
+  const [productsFerreteria, setProductsFerreteria] = useState<Product[]>([]);
+  const [productsViveres, setProductsViveres] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Categorys[]>([]);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await api.patch("/products/api-products-inventory-wis",{Page:1});
-        console.log(res.data.data);
+        const res = await api.patch("/categories/searchCategoriesApi/26",{Page:1});
         setProducts(res.data.data);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -39,11 +34,56 @@ const Home = () => {
         setLoading(false);
       }
     };
+    const fetchProductsFarmacia = async () => {
+      try {
+        const res = await api.patch("/categories/searchCategoriesApi/12",{Page:1});
+        setProductsFarmacia(res.data.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    const fetchProductsFerreteria = async () => {
+      try {
+        const res = await api.patch("/categories/searchCategoriesApi/13",{Page:1});
+        setProductsFerreteria(res.data.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    const fetchProductsViveres = async () => {
+      try {
+        const res = await api.patch("/categories/searchCategoriesApi/29",{Page:1});
+        setProductsViveres(res.data.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const fetchCategories = async () => {
+      try {
+        const res = await api.get("/categories/allCategoriesApi");
+       setCategories(res.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchCategories();
     fetchProducts();
+    fetchProductsFarmacia();
+    fetchProductsFerreteria();
+    fetchProductsViveres();
   }, []);
 
   // Array de categorías con sus respectivas imágenes
+  /*
   const categories = [
     { title: "Viveres", image: "/category/01-Viveres.png" },
     { title: "Frutas & Vegetales", image: "/category/02-Frutas&Vegetales.png" },
@@ -60,6 +100,7 @@ const Home = () => {
     { title: "Linea Deleite", image: "/category/13-LineaDeleite.png" },
     { title: "Delivery", image: "/category/14-Delivery.png" }
   ];
+  */
 
   return (
     <>
@@ -70,9 +111,9 @@ const Home = () => {
       <main>
         <Section title="Categorias">
           <Swiper
-            // navigation={{
-            //   prevEl: ".custom-prev", // Clase personalizada
-            // }}
+             navigation={{
+               prevEl: ".custom-prev", // Clase personalizada
+             }}
             slidesPerView={9}
             loop={true}
             autoplay={{
@@ -84,17 +125,17 @@ const Home = () => {
           >
             {categories.map((category, index) => (
             <SwiperSlide key={index}>
-              <Category title={category.title} image={category.image} />
+              <Category title={category.name} image={category.image} />
             </SwiperSlide>
             ))}
           </Swiper>
         </Section>
         <Section title="Los más vendidos" subtitle="Popular">
-          {/* <button className="custom-prev">⬅</button> */}
+          {/* <button className="custom-prev">⬅</button>  */}
           <Swiper
-            // navigation={{
-            //   prevEl: ".custom-prev", // Clase personalizada
-            // }}
+             navigation={{
+               prevEl: ".custom-prev", // Clase personalizada
+             }}
             slidesPerView={5}
             loop={true}
             autoplay={{
@@ -126,9 +167,9 @@ const Home = () => {
             modules={[Autoplay, Navigation]}
             className="mySwiper"
           >
-            {products.map((product, index) => (
+            {productsViveres.map((product, index) => (
               <SwiperSlide key={index}>
-                <Card title={product.name} price={product.price} />
+                <Card title={product.description} price={0} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -148,9 +189,9 @@ const Home = () => {
             modules={[Autoplay, Navigation]}
             className="mySwiper"
           >
-            {products.map((product, index) => (
+            {productsFerreteria.map((product, index) => (
               <SwiperSlide key={index}>
-                <Card title={product.name} price={product.price} />
+                <Card title={product.description} price={0} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -170,9 +211,9 @@ const Home = () => {
             modules={[Autoplay, Navigation]}
             className="mySwiper"
           >
-            {products.map((product, index) => (
+            {productsFarmacia.map((product, index) => (
               <SwiperSlide key={index}>
-                <Card title={product.name} price={product.price} />
+                <Card title={product.description} price={0} />
               </SwiperSlide>
             ))}
           </Swiper>
