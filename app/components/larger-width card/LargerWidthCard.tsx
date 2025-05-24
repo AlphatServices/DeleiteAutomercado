@@ -4,7 +4,7 @@ function LargerWidthCard() {
   return (
     <div className={styles["card"]}>
       <div className={styles["product-img"]}>
-        <img src="product-img-example/cheesecake.png" alt="" />
+        <img src="../product-img-example/cheesecake.png" alt="" />
       </div>
       <div className={styles["product-info"]}>
         <h3 className={styles["product-title"]}>Chocolate Cheesecake</h3>
@@ -16,7 +16,7 @@ function LargerWidthCard() {
         </div>
       </div>
       <div className={styles["product-add"]}>
-        <img src="/card/shopping-cart.svg" alt="" />
+        <img src="../card/shopping-cart.svg" alt="" />
       </div>
     </div>
   );

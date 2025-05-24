@@ -147,7 +147,7 @@ const Home = () => {
           >
             {products.map((product, index) => (
               <SwiperSlide key={index}>
-                <Card title={product.description} price={0} />
+                <Card id={product.productID} title={product.description} price={product.productStock.costPurchase} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -169,7 +169,7 @@ const Home = () => {
           >
             {productsViveres.map((product, index) => (
               <SwiperSlide key={index}>
-                <Card title={product.description} price={0} />
+                <Card id={product.productID} title={product.description} price={product.productStock.costPurchase} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -191,7 +191,7 @@ const Home = () => {
           >
             {productsFerreteria.map((product, index) => (
               <SwiperSlide key={index}>
-                <Card title={product.description} price={0} />
+                <Card id={product.productID} title={product.description} price={product.productStock.costPurchase} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -213,7 +213,7 @@ const Home = () => {
           >
             {productsFarmacia.map((product, index) => (
               <SwiperSlide key={index}>
-                <Card title={product.description} price={0} />
+                <Card id={product.productID} title={product.description} price={product.productStock.costPurchase} />
               </SwiperSlide>
             ))}
           </Swiper>

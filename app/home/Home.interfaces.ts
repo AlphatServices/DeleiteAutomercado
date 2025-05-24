@@ -1,7 +1,10 @@
 export interface Product {
+    fullDescription: string;
+    imageUrl: string;
+    productStock: any;
+    productID: number;
     name: string;
     description: string;
-    image: string;
     price: number;
     stock: number;
     category_id: number;
@@ -13,5 +16,4 @@ export interface Product {
     categoryID: number;
     description: string;
     active: boolean;
-    image: string;
   }

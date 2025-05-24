@@ -45,7 +45,7 @@ function SectionProduct() {
           <div className={styles["comment"]}>
             <img
               className={styles["user-profile-picture"]}
-              src="element-info/profile.png"
+              src="../element-info/profile.png"
               alt="Usuario"
             />
             <div className={styles["comment-user"]}>
@@ -66,7 +66,7 @@ function SectionProduct() {
           <div className={styles["comment"]}>
             <img
               className={styles["user-profile-picture"]}
-              src="element-info/profile.png"
+              src="../element-info/profile.png"
               alt="Usuario"
             />
             <div className={styles["comment-user"]}>
@@ -87,7 +87,7 @@ function SectionProduct() {
           <div className={styles["comment"]}>
             <img
               className={styles["user-profile-picture"]}
-              src="element-info/profile.png"
+              src="../element-info/profile.png"
               alt="Usuario"
             />
             <div className={styles["comment-user"]}>
@@ -106,7 +106,7 @@ function SectionProduct() {
             </div>
           </div>
           <a className={styles["loading-comments"]}>
-            <img src="element-info/Shape.svg" alt="" />
+            <img src="../element-info/Shape.svg" alt="" />
             Cargando comentarios
           </a>
         </div>

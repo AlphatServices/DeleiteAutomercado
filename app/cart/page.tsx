@@ -1,9 +1,23 @@
 "use client";
+import { useEffect, useState } from "react";
 import styles from "./Cart.module.css";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/footer/Footer";
+import { CartItem } from "./Cart.interface";
+import api from "../utils/api";
 
 export default function Cart() {
+
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      const response = await api.get("/cart");
+      setCartItems(response.data.data);
+    }   
+    fetchCartItems();
+  }, []);
+
   return (
     <>
       <header>

@@ -1,13 +1,14 @@
 import styles from "./Card.module.css";
 
 interface MyCategoryProps {
+  id: number;
   title: string;
   price: number;
 }
 
-function Card({ title, price }: MyCategoryProps) {
+function Card({ id, title, price }: MyCategoryProps) {
   return (
-    <a href="/product-info">
+    <a href={`/product-info/${id}`}>
       <div className={styles["card"]}>
         <div className={styles["product-img"]}>
           <img src="/product-img-example/cheesecake.png" alt="" />
