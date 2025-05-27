@@ -4,16 +4,51 @@ import styles from "./Cart.module.css";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/footer/Footer";
 import { CartItem } from "./Cart.interface";
+import { getSession,getToken } from "@/app/utils/Storage";
 import api from "../utils/api";
+import { updateCantProductCart } from "../utils/addCart";
 
 export default function Cart() {
 
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cantItems, setCantItems] = useState(0);
+  
+  
+  const handleAddProduct = (product:CartItem) => { 
+    
+    console.log('Add Product',product)
+    updateCantProductCart(product.id,product.cantidad+1)
+    setCartItems(prev => 
+      prev.map(producto => 
+        producto.id === product.id 
+          ? { ...producto, cantidad: producto.cantidad+1} 
+          : producto
+      )
+    );
+
+  }
+
+  const handleDeleteProduct = (product:CartItem) => {
+    if (product.cantidad > 1) {
+      setCartItems(prev => 
+        prev.map(producto => 
+          producto.id === product.id 
+            ? { ...producto, cantidad: producto.cantidad-1}
+            : producto
+        )
+      );
+    }
+  }
+
+  const handleRemoveProduct =(product:CartItem) =>{
+
+  }
 
   useEffect(() => {
     const fetchCartItems = async () => {
-      const response = await api.get("/cart");
-      setCartItems(response.data.data);
+      const response = getToken() ? await api.get("/carts/user-active") : await api.post("/carts/user-session",{session:getSession()});
+      setCartItems(response.data);
+      setCantItems(response.data.length);
     }   
     fetchCartItems();
   }, []);
@@ -26,7 +61,7 @@ export default function Cart() {
       <div className={styles["content-payment"]}>
         <div className={styles["cart-container"]}>
           <h2 className={styles["cart-title"]}>
-            Carrito <span>3</span>
+            Carrito <span>{cantItems}</span>
           </h2>
 
           <div className={styles["cart-table"]}>
@@ -38,106 +73,50 @@ export default function Cart() {
             </div>
 
             <div className={styles["cart-items"]}>
-              <div className={styles["cart-item"]}>
-                <div className={styles["cart-item-info"]}>
-                  <div className={styles["cart-item-image"]}>
-                    <img src="/cart/placeholder.svg" alt="Imagen del producto" />
-                  </div>
-                  <div className={styles["cart-item-details"]}>
-                    <h3>Vel pellentesque bibendum.</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                  </div>
-                </div>
-                <div className={styles["cart-item-price"]}>$33.9</div>
-                <div className={styles["cart-item-quantity"]}>
-                  <a className={`${styles["quantity-btn"]} ${styles["decrease"]}`}>
-                    <img src="/cart/remove.svg" alt="-" />
-                  </a>
-                  <span className={styles["quantity-value"]}>1</span>
-                  <a className={`${styles["quantity-btn"]} ${styles["increase"]}`}>
-                    <img src="/cart/add.svg" alt="+" />
-                  </a>
-                </div>
-                <div className={styles["cart-item-total"]}>$33.90</div>
-                <div className={styles["cart-item-actions"]}>
-                  <a className={styles["favorite-btn"]}>
-                    <img src="/cart/heart-outline.svg" alt="Favorito" />
-                  </a>
-                  <a className={styles["remove-btn"]}>
-                    <img src="/cart/close.svg" alt="Eliminar" />
-                  </a>
-                </div>
-              </div>
-              <div className={styles["cart-item"]}>
-                <div className={styles["cart-item-info"]}>
-                  <div className={styles["cart-item-image"]}>
-                    <img src="/cart/placeholder.svg" alt="Imagen del producto" />
-                  </div>
-                  <div className={styles["cart-item-details"]}>
-                    <h3>Magna quis at non</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Libero.
-                    </p>
-                  </div>
-                </div>
-                <div className={styles["cart-item-price"]}>$14.9</div>
-                <div className={styles["cart-item-quantity"]}>
-                  <a className={`${styles["quantity-btn"]} ${styles["decrease"]}`}>
-                    <img src="/cart/remove.svg" alt="-" />
-                  </a>
-                  <span className={styles["quantity-value"]}>1</span>
-                  <a className={`${styles["quantity-btn"]} ${styles["increase"]}`}>
-                    <img src="/cart/add.svg" alt="+" />
-                  </a>
-                </div>
-                <div className={styles["cart-item-total"]}>$14.90</div>
-                <div className={styles["cart-item-actions"]}>
-                  <a className={styles["favorite-btn"]}>
-                    <img src="/cart/heart-outline.svg" alt="Favorito" />
-                  </a>
-                  <a className={styles["remove-btn"]}>
-                    <img src="/cart/close.svg" alt="Eliminar" />
-                  </a>
-                </div>
-              </div>
 
-              <div className={styles["cart-item"]}>
-                <div className={styles["cart-item-info"]}>
-                  <div className={styles["cart-item-image"]}>
-                    <img src="/cart/placeholder.svg" alt="Imagen del producto" />
-                  </div>
-                  <div className={styles["cart-item-details"]}>
-                    <h3>Cursus tortor ac eget</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                  </div>
-                </div>
-                <div className={styles["cart-item-price"]}>$16.9</div>
-                <div className={styles["cart-item-quantity"]}>
-                  <a className={`${styles["quantity-btn"]} ${styles["decrease"]}`}>
-                    <img src="/cart/remove.svg" alt="-" />
-                  </a>
-                  <span className={styles["quantity-value"]}>1</span>
-                  <a className={`${styles["quantity-btn"]} ${styles["increase"]}`}>
-                    <img src="/cart/add.svg" alt="+" />
-                  </a>
-                </div>
-                <div className={styles["cart-item-total"]}>$16.90</div>
-                <div className={styles["cart-item-actions"]}>
-                  <a className={styles["favorite-btn"]}>
-                    <img src="/cart/heart-outline.svg" alt="Favorito" />
-                  </a>
-                  <a className={styles["remove-btn"]}>
-                    <img src="/cart/close.svg" alt="Eliminar" />
-                  </a>
-                </div>
-              </div>
+              {cartItems.map((cartItem,index)=>(
+
+                 <div className={styles["cart-item"]}  key={index}>
+
+                 <div className={styles["cart-item-info"]}>
+                   <div className={styles["cart-item-image"]}>
+                     <img src="/cart/placeholder.svg" alt="Imagen del producto" />
+                   </div>
+ 
+                   <div className={styles["cart-item-details"]}>
+                     <h3>Vel pellentesque bibendum.</h3>
+                     <p>
+                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                     </p>
+                   </div>
+ 
+                 </div>
+                 <div className={styles["cart-item-price"]}>${cartItem.precio}</div>
+                 <div className={styles["cart-item-quantity"]}>
+                   <a onClick={()=>handleDeleteProduct(cartItem)} className={`${styles["quantity-btn"]} ${styles["decrease"]}`}>
+                     <img src="/cart/remove.svg" alt="-" />
+                   </a>
+                   <span className={styles["quantity-value"]}>{cartItem.cantidad}</span>
+                   <a onClick={()=>handleAddProduct(cartItem)} className={`${styles["quantity-btn"]} ${styles["increase"]}`}>
+                     <img src="/cart/add.svg" alt="+" />
+                   </a>
+                 </div>
+                 <div className={styles["cart-item-total"]}>${(parseFloat(cartItem.precio)*cartItem.cantidad).toFixed(2)}</div>
+                 <div className={styles["cart-item-actions"]}>
+                   <a className={styles["favorite-btn"]}>
+                     <img src="/cart/heart-outline.svg" alt="Favorito" />
+                   </a>
+                   <a className={styles["remove-btn"]}>
+                     <img src="/cart/close.svg" alt="Eliminar" />
+                   </a>
+                   
+                 </div>
+               </div>
+              ))}
             </div>
           </div>
+
+
 
           <div className={styles["cart-checkout-grid"]}>
             <div className={styles["checkout-item"]}>

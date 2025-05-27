@@ -1,20 +1,30 @@
 "use client";
 import { useState } from "react";
 import styles from "./ProductInfo.module.css";
+import { addCart } from "@/app/utils/addCart";
 
-function ProductInfo({title,description,price,image}:any) {
-  console.log(image)
+function ProductInfo({productID,title,description,price,image}:any) {
   const [cantProduct, setCantProduct] = useState(1);
 
-  const handleAddProduct = () => {
+  const handleAddCantProduct = () => {
     setCantProduct(cantProduct + 1);
   }
 
-  const handleRemoveProduct = () => {
+  const handleRemoveCantProduct = () => {
     if (cantProduct > 1) {
       setCantProduct(cantProduct - 1);
     }
   }
+
+  const handleAddCart=(productID:number,cantProduct:number,price:number)=>{
+    console.log(productID);
+    console.log(cantProduct);
+    const resp = addCart(productID,cantProduct,price);
+    console.log('handleAddCart', resp)
+    
+  }
+
+  /** -------------------------------------------------------------------------------------------- */
   return (
     <div className={styles["content-product"]}>
       <div className={styles["product-img"]}>
@@ -44,11 +54,11 @@ function ProductInfo({title,description,price,image}:any) {
         </div>
 
         <div className={styles["counter"]}>
-          <a onClick={handleRemoveProduct}>
+          <a onClick={handleRemoveCantProduct}>
             <img src="../btn-info/remove.svg" alt="" />
           </a>
           <span>{cantProduct}</span>
-          <a onClick={handleAddProduct}>
+          <a onClick={handleAddCantProduct}>
             <img src="../btn-info/add.svg" alt="" />
           </a>
         </div>
@@ -57,7 +67,7 @@ function ProductInfo({title,description,price,image}:any) {
           <a className={`${styles["btn-product"]} ${styles["buy-now"]}`}>
             Comprar ya
           </a>
-          <a className={`${styles["btn-product"]} ${styles["add-cart"]}`}>
+          <a onClick={()=> handleAddCart(productID,cantProduct,price)}  className={`${styles["btn-product"]} ${styles["add-cart"]}`}>
             Añadir al carro
           </a>
         </div>

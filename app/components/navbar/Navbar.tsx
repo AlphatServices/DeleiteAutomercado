@@ -91,6 +91,14 @@ const Navbar = () => {
           </div>
         ) : (
           <div className={styles["right"]}>
+            <a href="/cart">
+              <img
+                src="/navbar/shopping-cart.svg"
+                alt="Shopping Cart"
+                width="24px"
+                height="24px"
+              />
+            </a>
             <a href="/login">
               <img
                 src="/navbar/user.svg"

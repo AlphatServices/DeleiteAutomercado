@@ -34,6 +34,7 @@ function ProductInfoPage() {
       </header>
       <main>
         <ProductInfo 
+          productID={product[0]?.productID}
           title={product[0]?.description} 
           description={product[0]?.fullDescription} 
           price={product[0]?.productStock.costPurchase} 

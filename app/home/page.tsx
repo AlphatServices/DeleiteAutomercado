@@ -82,26 +82,6 @@ const Home = () => {
     fetchProductsViveres();
   }, []);
 
-  // Array de categorías con sus respectivas imágenes
-  /*
-  const categories = [
-    { title: "Viveres", image: "/category/01-Viveres.png" },
-    { title: "Frutas & Vegetales", image: "/category/02-Frutas&Vegetales.png" },
-    { title: "Congelados & Refrigerados", image: "/category/03-Congelados&Refrigerados.png" },
-    { title: "Herramientas", image: "/category/04-Herramientas.png" },
-    { title: "Bebidas", image: "/category/05-Bebidas.png" },
-    { title: "Panaderia", image: "/category/06-Panaderia.png" },
-    { title: "Ofertas", image: "/category/07-Ofertas.png" },
-    { title: "Salud", image: "/category/08-Salud.png" },
-    { title: "Productos Frescos", image: "/category/09-ProductosFrescos.png" },
-    { title: "Compra Protegida", image: "/category/10-CompraProtegida.png" },
-    { title: "Menos de $10", image: "/category/11-Menos10.png" },
-    { title: "Los Mejores Precios", image: "/category/12-LosMejoresPrecios.png" },
-    { title: "Linea Deleite", image: "/category/13-LineaDeleite.png" },
-    { title: "Delivery", image: "/category/14-Delivery.png" }
-  ];
-  */
-
   return (
     <>
       <header>
