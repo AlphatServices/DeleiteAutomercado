@@ -1,0 +1,322 @@
+/* About Header */
+.aboutHeader {
+  background-color: #f5f5f5;
+  padding: 3rem 0;
+  text-align: center;
+  width: 100%;
+}
+
+.aboutHeader h1 {
+  font-size: 4rem;
+  line-height: 4rem;
+  color: #333;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* About Section */
+.aboutSection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  width: 100%;
+}
+
+.aboutContent {
+  display: flex;
+  gap: 4rem;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.aboutText {
+  flex: 1;
+}
+
+.aboutText h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  color: #182135;
+  margin-bottom: 2.5rem;
+}
+
+.aboutText p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.aboutImage {
+  flex: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.aboutImageContent {
+  width: 100%;
+  height: auto;
+  display: block;
+  background-color: #ddd;
+  min-height: 250px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Chef Section */
+.aboutChefs {
+  max-width: 1004px;
+  padding: 4rem 2rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.aboutChefsTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.aboutChefsTitle h2 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  color: #363940;
+}
+
+.aboutChefsTitle span {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.375rem;
+  text-align: center;
+  color: #95a1bb;
+}
+
+.chefContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.chefCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.chefImage {
+  aspect-ratio: 220/160;
+  width: 100%;
+  background-color: #ddd;
+  overflow: hidden;
+  position: relative;
+}
+
+.chefImageContent {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chefInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.chefInfo h3 {
+  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
+  color: #363940;
+}
+
+.chefInfo p {
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #95a1bb;
+}
+
+.chefDescription {
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  color: #95a1bb;
+}
+
+/* Testimonials Section */
+.testimonialsSection {
+  max-width: 1004px;
+  padding: 4rem 2rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.testimonialsHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.testimonialsHeader h2 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  color: #363940;
+}
+
+.testimonialsHeader span {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.375rem;
+  text-align: center;
+  color: #95a1bb;
+}
+
+.testimonialsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  position: relative;
+}
+
+.testimonialCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.testimonialImage {
+  aspect-ratio: 220/160;
+  width: 100%;
+  background-color: #ddd;
+  overflow: hidden;
+  position: relative;
+}
+
+.testimonialImageContent {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonialInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.testimonialInfo h3 {
+  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
+  color: #363940;
+}
+
+.testimonialInfo p {
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #95a1bb;
+}
+
+.stars {
+  display: flex;
+  margin-bottom: 0.75rem;
+}
+
+.filledStar {
+  color: #141416;
+  font-size: 1.375rem;
+  margin-right: 0.25rem;
+}
+
+.emptyStar {
+  color: #CAD1E1;
+  font-size: 1.375rem;
+  margin-right: 0.25rem;
+}
+
+.testimonialDescription {
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  color: #95a1bb;
+}
+
+/* Gallery Section */
+.gallerySection {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+}
+
+.galleryImage {
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  background-color: #ddd;
+  position: relative;
+}
+
+.galleryImageContent {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+  .chefContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonialsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallerySection {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutContent {
+    flex-direction: column;
+  }
+
+  .reverse {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .chefContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonialsContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .gallerySection {
+    grid-template-columns: 1fr;
+  }
+}

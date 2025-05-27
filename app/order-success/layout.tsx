@@ -1,24 +1,21 @@
 "use client";
-import { useEffect, useState } from "react";
 import Footer from '../components/footer/Footer';
 import Navbar from '../components/navbar/Navbar';
-import OrderSuccess from './page';
 
-export default function OrderSuccessLayout() {
-  const [orderNumber, setOrderNumber] = useState<string>("");
+import { ReactNode } from 'react';
 
-  useEffect(() => {
-    const randomOrderNumber = Math.floor(100000 + Math.random() * 900000).toString();
-    setOrderNumber(randomOrderNumber);
-  }, []);
+interface OrderSuccessLayoutProps {
+  children: ReactNode;
+}
 
+export default function OrderSuccessLayout({ children }: OrderSuccessLayoutProps) {
   return (
     <>
       <header>
         <Navbar />
       </header>
       <main>
-        {orderNumber && <OrderSuccess orderNumber={orderNumber} />}
+        {children}
       </main>
       <footer>
         <Footer />
