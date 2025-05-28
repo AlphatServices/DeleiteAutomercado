@@ -1,0 +1,167 @@
+/* Access.module.css - Estilos para la sección de Acceso y seguridad */
+
+/* Contenedor principal */
+.my-profile-container {
+  display: flex;
+  gap: 40px;
+  max-width: 1120px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Estilos del contenido principal */
+.personal-content {
+  flex: 1;
+}
+
+/* Estilos del encabezado */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.header-container h2 {
+  font-size: 3rem;
+  line-height: 3.5rem;
+  font-weight: 700;
+  color: #23262f;
+}
+
+/* Estilos de la sección de perfil */
+.profile-section {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #E6E8EC;
+}
+
+.profile-section:last-of-type {
+  border-bottom: none;
+}
+
+.profile-section h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #23262f;
+  margin-bottom: 1.5rem;
+}
+
+/* Estilos para secciones con filas horizontales */
+.login-container,
+.device-container {
+  width: 100%;
+}
+
+.login-row,
+.device-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  position: relative;
+}
+
+.login-row:not(:last-child)::after,
+.device-row:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #E6E8EC;
+}
+
+/* Estilos de información */
+.login-info,
+.device-info,
+.social-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.login-info h3,
+.device-info h3,
+.social-info h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+  margin: 0;
+}
+
+.last-updated,
+.status-not-connected,
+.device-info p {
+  font-size: 0.875rem;
+  color: #777E90;
+  margin: 0;
+}
+
+/* Estilos para botones */
+.update-password-btn,
+.connect-btn,
+.logout-device-btn {
+  background: #fff;
+  border: 1px solid #E6E8EC;
+  border-radius: 90px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 100px;
+  text-align: center;
+}
+
+.update-password-btn:hover,
+.connect-btn:hover {
+  background: #F4F5F6;
+}
+
+.logout-device-btn:hover {
+  color: #EF466F;
+  border-color: #EF466F;
+}
+
+/* Estilos para sección de redes sociales */
+.social-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.social-account {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Visibilidad de secciones */
+#personal-info-content {
+  display: none; /* Ocultar por defecto */
+}
+
+#security-content {
+  display: block; /* Mostrar por defecto */
+}
+
+/* Media queries para responsividad */
+@media (max-width: 767px) {
+  .my-profile-container {
+    flex-direction: column;
+  }
+  
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .social-layout {
+    grid-template-columns: 1fr;
+  }
+}

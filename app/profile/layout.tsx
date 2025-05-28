@@ -15,6 +15,11 @@ const links = [
     name: "Mis pedidos",
     href: "/profile/orders",
   },
+  {
+    icon: "/profile/sidebar/security-icon.svg",
+    name: "Acceso y seguridad",
+    href: "/profile/access",
+  },
 ];
 
 export default function ProfileLayout({
