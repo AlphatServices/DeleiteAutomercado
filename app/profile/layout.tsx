@@ -20,6 +20,11 @@ const links = [
     name: "Acceso y seguridad",
     href: "/profile/access",
   },
+  {
+    icon: "/profile/sidebar/payment-icon.svg",
+    name: "Información de pago",
+    href: "/profile/payment",
+  },
 ];
 
 export default function ProfileLayout({
