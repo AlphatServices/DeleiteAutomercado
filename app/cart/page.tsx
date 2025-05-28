@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import styles from "./Cart.module.css";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/footer/Footer";
@@ -12,6 +12,8 @@ export default function Cart() {
 
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [cantItems, setCantItems] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
   
   
   const handleAddProduct = (product:CartItem) => { 
@@ -43,15 +45,40 @@ export default function Cart() {
   const handleRemoveProduct =(product:CartItem) =>{
 
   }
-
+  const totalProducts =(product:CartItem) =>{
+    
+  }
   useEffect(() => {
     const fetchCartItems = async () => {
-      const response = getToken() ? await api.get("/carts/user-active") : await api.post("/carts/user-session",{session:getSession()});
-      setCartItems(response.data);
-      setCantItems(response.data.length);
-    }   
+      try {
+        console.log("Productos")
+        const response = getToken() ? await api.get("/carts/user-active") : await api.post("/carts/user-session",{session:getSession()});
+        setCartItems(response.data);
+        setCantItems(response.data.length);
+      } catch (error) {
+        console.log('Error al buscar los producto del carrito de compra',error)
+      } finally {
+        setLoading(false);
+      }
+    }
     fetchCartItems();
+    getTotal()
   }, []);
+
+  const getTotal = ()=>{
+    
+    console.log('Total')
+    console.log(cartItems)
+    /*const priceForProduct = cartItems.map((product)=>{
+      return parseFloat(product.precio)* product.cantidad
+    })
+    console.log(priceForProduct)
+    setTotal(priceForProduct.reduce((acum,value)=>{return acum+value},0));
+    */
+    setTotal(cartItems.map((product)=>parseFloat(product.precio)* product.cantidad).reduce((acc,curr)=>acc+curr,0) )
+
+  }
+ 
 
   return (
     <>
@@ -73,11 +100,11 @@ export default function Cart() {
             </div>
 
             <div className={styles["cart-items"]}>
-
-              {cartItems.map((cartItem,index)=>(
+              {loading && <div className={styles["cart-item-info"]}> Cargando...</div>}
+              {cartItems.length==0 && loading== false && <div className={styles["cart-item-info"]}> No hay producto</div>}
+              {cartItems?.map((cartItem,index)=>(
 
                  <div className={styles["cart-item"]}  key={index}>
-
                  <div className={styles["cart-item-info"]}>
                    <div className={styles["cart-item-image"]}>
                      <img src="/cart/placeholder.svg" alt="Imagen del producto" />
@@ -116,8 +143,6 @@ export default function Cart() {
             </div>
           </div>
 
-
-
           <div className={styles["cart-checkout-grid"]}>
             <div className={styles["checkout-item"]}>
               <div className={styles["promocode-container"]}>
@@ -137,7 +162,7 @@ export default function Cart() {
             <div className={styles["checkout-item"]}>
               <div className={styles["discount-row"]}>
                 <span>Descuento:</span>
-                <span className={styles["value"]}>$7.66</span>
+                <span className={styles["value"]}>${total}</span>
               </div>
             </div>
 
@@ -153,11 +178,11 @@ export default function Cart() {
             <div className={styles["checkout-item"]}>
               <div className={styles["total-row"]}>
                 <span>Precio Total:</span>
-                <span className={styles["value"]}>$68.94</span>
+                <span className={styles["value"]}>${total}</span>
               </div>
             </div>
             <div className={styles["checkout-item"]}>
-              <a href="/payment" className={styles["checkout-btn"]}>Finalizar Compra</a>
+              {cantItems > 0 && <a href="/payment" className={styles["checkout-btn"]}>Finalizar Compra</a>}
             </div>
           </div>
         </div>
